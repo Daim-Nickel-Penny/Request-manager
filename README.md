@@ -5,10 +5,20 @@
 - **Frontend**: React (with TypeScript)
 - **State Management**: React Query, Zustand
 - **Validation**: Zod
-- **Testing**: Vitest, React Testing Library
-- **Styling**: TailwindCSS or plain CSS
+- **Testing**: Vitest, React Testing Library <em>[WIP]</em>
+- **Styling**: TailwindCSS
 
 ---
+
+## Screenshots
+
+#### Make request to any endpoint
+
+<img src="./repo-assets/fetch-re.png" />
+
+#### Check your previous request history
+
+<img src="./repo-assets/req-list.png" />
 
 ## Testing
 
