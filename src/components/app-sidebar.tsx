@@ -22,8 +22,8 @@ const data = {
       url: "/",
       items: [
         {
-          title: "Make Request",
-          url: "/make",
+          title: "Fetch Request",
+          url: "/fetch",
         },
         {
           title: "Previous Requests",
