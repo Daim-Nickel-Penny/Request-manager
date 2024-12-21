@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -6,43 +8,44 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Skeleton } from "~/components/ui/skeleton";
 import { SkeletonCard } from "./skeleton-card";
+import useRequestManagerStore from "~/store/request-manager";
+import React from "react";
 
 const ServerResponse = () => {
+  const { isLoading, getLatestResponse } = useRequestManagerStore();
+
   return (
-    <Card className="w-[950px] p-8">
-      <CardHeader>
-        <CardTitle>Response</CardTitle>
-        <CardDescription className="select-none font-mono text-green-500">
-          GET
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div>
-          {`
-[
-    {
-      userId: 1,
-      id: 1,
-      title: "delectus aut autem",
-      completed: false,
-    },
-    {
-      userId: 1,
-      id: 2,
-      title: "quis ut nam facilis et officia qui",
-      completed: false,
-    },
-  ]
-            `}
-        </div>
-      </CardContent>
-      <CardFooter className="select-none text-sm font-normal text-gray-200/50">
-        {`200 ms`}
-      </CardFooter>
-      {/* <SkeletonCard /> */}
-    </Card>
+    <React.Fragment>
+      {!isLoading ? (
+        <React.Fragment>
+          <Card className="w-[950px] p-8">
+            <CardHeader>
+              <CardTitle>Response</CardTitle>
+              <CardDescription className="select-none font-mono text-green-500">
+                GET
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div>
+                {getLatestResponse() !== undefined ? (
+                  <>{JSON.stringify(getLatestResponse())}</>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </CardContent>
+            {/* <CardFooter className="select-none text-sm font-normal text-gray-200/50">
+              {`200 ms`}
+            </CardFooter> */}
+          </Card>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <SkeletonCard />
+        </React.Fragment>
+      )}
+    </React.Fragment>
   );
 };
 
