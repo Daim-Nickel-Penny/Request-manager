@@ -1,5 +1,7 @@
 # Request Manager
 
+Call and test yours API's in browser!
+
 ## Technology Stack
 
 - **Frontend**: React (with TypeScript)
